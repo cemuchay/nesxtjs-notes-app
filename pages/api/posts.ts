@@ -1,7 +1,7 @@
 const { connectToDatabase } = require('../../lib/mongodb');
 const ObjectId = require('mongodb').ObjectId;
 
-export default async function handler(req, res) {
+export default async function handler(req: { method: any; }, res: any) {
     // switch the methods
     switch (req.method) {
         case 'GET': {
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     }
 }
 
-async function getPosts(req, res) {
+async function getPosts(req: { method: any; }, res: { json: (arg0: { message: any; success: boolean; }) => any; }) {
     try {
         // connect to the database
         let { db } = await connectToDatabase();
@@ -39,14 +39,14 @@ async function getPosts(req, res) {
         });
     } catch (error) {
         // return the error
-        return res.json({
-            message: new Error(error).message,
-            success: false,
-        });
+        // return res.json({
+        //     message: new Error(error).message,
+        //     success: false,
+        // });
     }
 }
 
-async function addPost(req, res) {
+async function addPost(req: { method?: any; body?: any; }, res: { json: (arg0: { message: string; success: boolean; }) => any; }) {
     try {
         // connect to the database
         let { db } = await connectToDatabase();
@@ -59,14 +59,14 @@ async function addPost(req, res) {
         });
     } catch (error) {
         // return an error
-        return res.json({
-            message: new Error(error).message,
-            success: false,
-        });
+        // return res.json({
+        //     message: new Error(error).message,
+        //     success: false,
+        // });
     }
 }
 
-async function updatePost(req, res) {
+async function updatePost(req: { method?: any; body?: any; }, res: { json: (arg0: { message: string; success: boolean; }) => any; }) {
     try {
         // connect to the database
         let { db } = await connectToDatabase();
@@ -87,14 +87,14 @@ async function updatePost(req, res) {
     } catch (error) {
 
         // return an error
-        return res.json({
-            message: new Error(error).message,
-            success: false,
-        });
+        // return res.json({
+        //     message: new Error(error).message,
+        //     success: false,
+        // });
     }
 }
 
-async function deletePost(req, res) {
+async function deletePost(req: { method?: any; body?: any; }, res: { json: (arg0: { message: string; success: boolean; }) => any; }) {
     try {
         // Connecting to the database
         let { db } = await connectToDatabase();
@@ -112,9 +112,9 @@ async function deletePost(req, res) {
     } catch (error) {
 
         // returning an error
-        return res.json({
-            message: new Error(error).message,
-            success: false,
-        });
+        // return res.json({
+        //     message: new Error(error).message,
+        //     success: false,
+        // });
     }
 }

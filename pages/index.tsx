@@ -5,7 +5,7 @@ import Nav from '../components/Nav';
 import PostCard from '../components/PostCard';
 import styles from '../styles/Home.module.css';
 
-export default function Home({ posts }) {
+export default function Home({ posts }: { posts: any }) {
   return (
     <div>
       <Head>
